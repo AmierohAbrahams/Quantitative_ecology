@@ -49,9 +49,9 @@ data("mite")
 data(mite.env)
 data("mite.xy")
 
-DoubsSpe <- read_csv("NEwR_1st_edition_R332/NEwR_updated_material_R332-NEwR_ed1/DoubsSpe.csv")
-DoubsSpa <- read_csv("NEwR_1st_edition_R332/NEwR_updated_material_R332-NEwR_ed1/DoubsSpa.csv")
-DoubsEnv <- read_csv("NEwR_1st_edition_R332/NEwR_updated_material_R332-NEwR_ed1/DoubsEnv.csv")
+# DoubsSpe <- read_csv("NEwR_1st_edition_R332/NEwR_updated_material_R332-NEwR_ed1/DoubsSpe.csv")
+# DoubsSpa <- read_csv("NEwR_1st_edition_R332/NEwR_updated_material_R332-NEwR_ed1/DoubsSpa.csv")
+# DoubsEnv <- read_csv("NEwR_1st_edition_R332/NEwR_updated_material_R332-NEwR_ed1/DoubsEnv.csv")
 ```
 
 Exploring the data. This gives an idea about the structure of the data. 
@@ -88,7 +88,7 @@ theme1 <- function(base_size = 14, base_family = "serif"){
     theme(axis.title = element_text(size = 14),
       legend.key=element_rect(colour=NA, fill =NA),
       panel.grid = element_blank(),   
-      panel.border = element_rect(fill = NA, colour = "black", size = 2),
+      panel.border = element_rect(fill = NA, colour = "black", size = 0.5),
       panel.background = element_rect(fill = "white", colour = "black"), 
       strip.background = element_rect(fill = NA)
     )
@@ -111,10 +111,18 @@ df_r <- data.frame(integers = dataframe) # This allows me to view the actual dat
 df_r$integers.Var1 <- as.numeric(df_r$integers.Var1) # converting to numeric from a factor
 df_r$integers.Freq <- as.numeric(df_r$integers.Freq)
 
+# Code without limits added to x-axis and yaxis
+ggplot(data = df_r, aes(x = integers.Var1, y = integers.Freq, fill=integers.Var1)) +
+  geom_bar(stat="identity", position=position_dodge()) +
+  labs(x = "Abundance class", y = "Frequency") +
+  theme1()
+
 # Now plotting the  bar graph
 ggplot(data = df_r, aes(x = integers.Var1, y = integers.Freq, fill=integers.Var1)) +
   geom_bar(stat="identity", position=position_dodge()) +
   labs(x = "Abundance class", y = "Frequency") +
+  scale_y_continuous(limits=c(-1, 600)) +
+  scale_x_continuous(limits=c(0,6)) +
   theme1()
   
 ```
@@ -129,7 +137,7 @@ DoubsSpa$X1 <- as.numeric(DoubsSpa$X1)
 plot(DoubsSpa)
 try1 <- ggplot(data = DoubsSpa, aes(x = X, y = Y)) +
   geom_path(data = DoubsSpa, aes(label = X1), size = 0.5, colour = "blue") +
-  geom_text(data = DoubsSpa, aes(label = X1), size = 5, colour = "red") +
+  geom_text(data = DoubsSpa, aes(label = X1), size = 4, colour = "red") +
   #geom_line() +
   #lines() +
  annotate("text", label = "Downstream", x = 5, y = 39, size = 4.0, angle = 0, colour = "red") +
@@ -147,52 +155,54 @@ Creating bubble maps which illastrate the distribution of the fish species
 ```{r}
 
 # Creating a plot into four frames two per row - facet wrap in tidyverse
-
 # Transforming the DoubsSpe dataset
-DoubsSpa <- as.numeric(DoubsSpe$Cogo)
-
-ggplot(data = DoubsSpa, aes(x = X, y = Y)) +
-  geom_path(data = DoubsSpa, aes(label = X1), size = 0.5, colour = "red") +
-  geom_point(data = as.numeric(DoubsSpe$Cogo))+
- labs(x = "x coordinate (km)", y = "y coordinate (km)", title = "Site Locations") +
+try2 <- ggplot(data = DoubsSpa, aes(x = X, y = Y)) +
+  geom_path(data = DoubsSpa, aes(label = X1), size = 0.5, colour = "blue") +
+  geom_point(aes(cex=DoubsSpe$Satr), shape = 1) +
+ labs(x = "x coordinate (km)", y = "y coordinate (km)", title = "Brown trout") +
  theme_bw() +
     theme(panel.border = element_rect(fill = NA, colour = "black", size = 1),
           axis.text = element_text(colour = "black"),
           axis.ticks = element_line(colour = "black"))
+try2
+
+try3 <- ggplot(data = DoubsSpa, aes(x = X, y = Y)) +
+  geom_path(data = DoubsSpa, aes(label = X1), size = 0.5, colour = "blue") +
+  geom_point(aes(cex=DoubsSpe$Thth), shape = 1) +
+ labs(x = "x coordinate (km)", y = "y coordinate (km)", title = "Grayling") +
+ theme_bw() +
+    theme(panel.border = element_rect(fill = NA, colour = "black", size = 1),
+          axis.text = element_text(colour = "black"),
+          axis.ticks = element_line(colour = "black"))
+try3
+
+
+try4 <- ggplot(data = DoubsSpa, aes(x = X, y = Y)) +
+  geom_path(data = DoubsSpa, aes(label = X1), size = 0.5, colour = "blue") +
+  geom_point(aes(cex=DoubsSpe$Baba), shape = 1) +
+ labs(x = "x coordinate (km)", y = "y coordinate (km)", title = "Barbel") +
+ theme_bw() +
+    theme(panel.border = element_rect(fill = NA, colour = "black", size = 1),
+          axis.text = element_text(colour = "black"),
+          axis.ticks = element_line(colour = "black"))
+try4
+
+try5 <- ggplot(data = DoubsSpa, aes(x = X, y = Y)) +
+  geom_path(data = DoubsSpa, aes(label = X1), size = 0.5, colour = "blue") +
+  geom_point(aes(cex=DoubsSpe$Abbr), shape = 1) +
+ labs(x = "x coordinate (km)", y = "y coordinate (km)", title = "Barbel") +
+ theme_bw() +
+    theme(panel.border = element_rect(fill = NA, colour = "black", size = 1),
+          axis.text = element_text(colour = "black"),
+          axis.ticks = element_line(colour = "black"))
+try5
+
+library(ggpubr)
+final_combined <- ggarrange(try2, try3, try4, try5,
+          ncol = 2, nrow = 2)
+final_combined
 
 ```
-
-
-```{r}
-
-dev.new(title="Species Locations", width=9, height=9)
-# Divide the plot window into 4 frames, 2 per row
-par(mfrow=c(2,2))
-# Plot four species
-plot(spa, asp=1, cex.axis=0.8, col="brown", cex=spe$Satr, main="Brown trout", 
-	xlab="x coordinate (km)", ylab="y coordinate (km)")
-lines(spa, col="light blue")
-plot(spa, asp=1, cex.axis=0.8, col="brown", cex=spe$Thth, main="Grayling", 
-	xlab="x coordinate (km)", ylab="y coordinate (km)")
-lines(spa, col="light blue")
-plot(spa, asp=1, cex.axis=0.8, col="brown", cex=spe$Baba, main="Barbel", 
-	xlab="x coordinate (km)", ylab="y coordinate (km)")
-lines(spa, col="light blue")
-plot(spa, asp=1, cex.axis=0.8, col="brown", cex=spe$Abbr, main="Common bream", 
-	xlab="x coordinate (km)", ylab="y coordinate (km)")
-lines(spa, col="light blue")
-```
-
-Plotting a histogram to determine the number of species present at different sites.
-
-```{r}
-
-dat1 <- data.frame(apply(DoubsSpe > 0, 2, sum))
-dat1_numeric <- dat1$apply.DoubsSpe...0..2..sum. <- as.numeric((dat1$apply.DoubsSpe...0..2..sum.))
-new <- data.frame(dat1_numeric)
-DoubsSpa$X1 <- as.numeric(DoubsSpa$X1)
-```
-
 
 By loading the library (ade4) i am now able to load the data within this package. Inorder to run the data i load the data into R by using data("jv73"). This adds the co-ordinates of this location into the environment pane. Thereafter i am able to visualise the data. This code was built up by different research sources on google. This function bellow specifically focus on the morphology and distributions factors of each of the species at the different sites within this region. For this function to run i must install the sp and raster packages.
 
@@ -235,11 +245,93 @@ if(adegraphicsLoaded()) {
 
 ```
 
+Here i plot a histogram to comparing the number of species and the species occurance present at different sites. 
+
+```{r}
+spe.pres <- apply(DoubsSpe > 0, 2, sum)
+sorting_spe <- sort(spe.pres) 
+spe.pres_dataframe <- data.frame(Species = sorting_spe)
+spe.pres_dataframe$Species <- as.numeric(spe.pres_dataframe$Species)
+ggplot(data = spe.pres_dataframe, aes(x = Species)) +
+  geom_histogram()
+
+
+spe.relf <- 100*sorting_spe/nrow(DoubsSpe) # Calculating percentage frequency
+sorting_fre <- round(sort(spe.relf), 1)
+spe.relf_dataframe <- data.frame(Species_freq = sorting_fre)
+spe.relf_dataframe$Species_freq <- as.numeric(spe.relf_dataframe$Species_freq)
+
+final_cbind <- cbind(spe.pres_dataframe, spe.relf_dataframe)
+plot1 <- ggplot(data = final_cbind, aes(x = Species)) +
+  geom_histogram(breaks=seq(0,30,by=5), col="red") +
+  labs(x = "Number of occurrences (%)", y = "Number of species", title = "Species Occurences") +
+  theme1()
+
+plot2 <- ggplot(data = final_cbind, aes(x = Species_freq)) +
+  geom_histogram(breaks=seq(0, 100, by=10), col="red") +
+  labs(x = "Frequency of occurrences (%)", y = "Number of species", title = "Species Relative Frequencies") +
+  theme1()
+
+plot_combined <- ggarrange(plot1, plot2,
+          ncol = 2)
+plot_combined
+```
+
+
+```{r}
+# Compute the number of species at each site
+# To sum by rows, the second argument of apply(), MARGIN, is set to 1
+sit.pres <- apply(spe > 0, 1, sum)
+# Sort the results in increasing order
+sort(sit.pres)
+dev.new(title="Species Richness", width=10, height=5)
+par(mfrow=c(1,2))
+# Plot species richness vs. position of the sites along the river
+plot(sit.pres,type="s", las=1, col="gray",
+	main="Species Richness vs. \n Upstream-Downstream Gradient",
+	xlab="Positions of sites along the river", ylab="Species richness")
+text(sit.pres, row.names(spe), cex=.8, col="red")
+# Use geographic coordinates to plot a bubble map
+plot(spa, asp=1, main="Map of Species Richness", pch=21, col="white", 
+	bg="brown", cex=5*sit.pres/max(sit.pres), xlab="x coordinate (km)", 
+	ylab="y coordinate (km)")
+lines(spa, col="light blue")
+```
+
+
+
+```{r}
+sit.pres <- apply(DoubsSpe > 0, 1, sum)
+sort(sit.pres) # Arranging results
+df_r <- data.frame(sit_pre = sit.pres)
+
+df_r$sit_pre <- as.numeric(df_r$sit_pre)
+# Plot species richness vs. position of the sites along the river
+
+
+
+
+plot(sit.pres,type="s", las=1, col="gray",
+	main="Species Richness vs. \n Upstream-Downstream Gradient",
+	xlab="Positions of sites along the river", ylab="Species richness")
+text(sit.pres, row.names(DoubsSpe), cex=.8, col="red")
+
+
+# Use geographic coordinates to plot a bubble map
+plot(DoubsSpa, asp=1, main="Map of Species Richness", pch=21, col="white", 
+	bg="brown", cex=5*sit.pres/max(sit.pres), xlab="x coordinate (km)", 
+	ylab="y coordinate (km)")
+lines(DoubsSpa, col="light blue")
+```
+
+
+
+
+
 
 Creating some basic visualisations on the dataset only focusing on the nitrogen (nit) collected at the various sites or X1 values. Visualisations often help analysing and provide a better understanding on the dataset.
 
 ```{r}
-
 DoubsEnv$X1 <- as.numeric(DoubsEnv$X1)
 
 ggplot(DoubsEnv, aes(x = X1, y = nit)) +
@@ -250,13 +342,11 @@ ggplot(DoubsEnv, aes(x = X1, y = nit)) +
     theme(panel.border = element_rect(fill = NA, colour = "black", size = 1),
           axis.text = element_text(colour = "black"),
           axis.ticks = element_line(colour = "black"))
-
 ```
 
 Creating a box plot comparing X1 value to the amount of nitrogen present
 
 ```{r}
-
 ggplot(data = DoubsEnv, aes(x = X1, y = nit)) +
   geom_boxplot(aes(fill = "salmon")) +
   theme1()
@@ -265,7 +355,6 @@ ggplot(data = DoubsEnv, aes(x = X1, y = nit)) +
 I now make use of the diversity function within the vegan package to analyse the species richness and diversity within the DoubsSpe dataset. This datset is available in the vegan package as well. To view help in any function simply search it in the help function or type ?diversity in the console. Thereafter i calculate the nessasary infomation which explains the diversity within this DoubsSpe dataset. Once the calculations are complete i combine these variables thus creating a new complete dataset.
 
 ```{r}
-
 N0 <- rowSums(DoubsSpe > 0)         # Species richness
 N0_dataframe <- data.frame(N0)      # converting the above into a dataframe
 H <- diversity(DoubsSpe)            # Shannon entropy
@@ -313,6 +402,7 @@ DoubsSpe_relsp[1:5,2:4]
 # Display the sum by column
 # Classical: apply(spe.relsp, 2, sum)
 colSums(DoubsSpe_relsp)
+round_relsp <- round(DoubsSpe_relsp, 1)
 ```
 
 Here i show various transformation techniques commonly used. First i look at the chord transformation. Here i normalise the species dataset. Thereafter i do the Hellinger transformation where i make use of the function "hellinger". Now i do the chi-square transformation as well as the Wisconsin transformation. Both the chord transformation as well as the hellinger transformation with having applied the Euclidean distance function is often useful before doing PCA and RDA.
@@ -340,38 +430,51 @@ DoubsSpe_wis[1:5,2:4]
 Now i create a boxplot to visualise and compare the effects of the above calculated transformations and standardisations.
 
 ```{r fig.cap = "Fig. 2.6 Boxplots of transformed abundances of a common species, Nemacheilus barbatulus"}
-dat2 <- DoubsSpe %>% 
-  mutate(log10 = log10(Babl)) %>% 
-  mutate(log = log(Babl)) %>%
-  mutate(cuberoot = (Babl)) %>% 
-  mutate(sqrt = sqrt(Babl))
+# Try 1 with ggplot
+ggplot(DoubsSpe,aes(x=factor(0),"babl")) +
+  geom_boxplot() +
+  theme1()
+qplot(factor(0),"babl",data=DoubsSpe,geom='boxplot')
 
-ggplot(data = dat2, aes(x = "", y = "")) +
-  geom_boxplot(aes(fill = log)) +
-  labs(title = "Simple transformation")
+# 
+data(DoubsSpe)
+boxplot(DoubsSpe$Babl) +
+  theme1()
 
-ggplot(data = dat2, aes(x = "", y = "")) +
-  geom_boxplot(aes(fill = log)) +
-  labs(title = "Standardization by species")
+# Standardization by species
+boxplot(DoubsSpe_scale$Babl, DoubsSpe_relsp$Babl,
+  main="Standardization by species",
+	names=c("max", "total"), col="lightgreen") + 
+  theme1()
 
 
-ggplot(data = dat2, aes(x = "", y = "")) +
-  geom_boxplot(aes(fill = log)) +
-  labs(title = "Standardizatin by site")
+DoubsSpe_scale_Babl <- c(0.0, 0.6, 1.0, 1.0, 0.4, 1.0, 1.0, 0.0, 0.6, 0.8, 0.2, 0.8, 0.4, 0.8, 1.0, 1.0, 0.8, 0.6, 1.0, 0.4, 0.2, 0.2, 0.0, 0.0, 0.0, 0.2, 0.2)
 
-ggplot(data = dat2, aes(x = "", y = "")) +
-  geom_boxplot(aes(fill = log)) +
-  labs(title = "Double standardization")
+DoubsSpe_relsp_Babl <- c(0.0, 0.0, 0.1, 0.1, 0.0, 0.1, 0.1, 0.0, 0.0 )
+new_data <- cbind(DoubsSpe_scale_Babl, DoubsSpe_relsp_Babl)
+
+
+library(reshape2)
+df1 <- melt(df)
+
+library(ggplot2)
+ggplot(aes(x = variable, y = value), data = df1) + geom_boxplot() + facet_wrap(~key)
+
+
+
+
+#Standardisation by site
 ```
 
 
 
 
+Environmental Data
 
 
 
 
-
+ 
 
 
 
