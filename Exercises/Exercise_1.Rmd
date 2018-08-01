@@ -423,20 +423,61 @@ DoubsSpe_wis[1:5,2:4]
 
 Now i create a boxplot to visualise and compare the effects of the above calculated transformations and standardisations.
 
+```{r}
+
+```
+
+
+
 
 
 Environmental dataset
 
 ```{r}
 bubble1 <- ggplot(data = DoubsSpa, aes(x = X, y = Y)) +
-  geom_path(data = DoubsSpa, aes(label = X1), size = 0.5, colour = "lightblue") +
-  geom_point(aes(cex=DoubsEnv$alt), fill = "red", colour = "red", shape = 1) +
-  labs(x = "x", y = "y", title = "Altitude") +
-  theme_bw() +
-  theme(panel.border = element_rect(fill = NA, colour = "black", size = 1),
-        axis.text = element_text(colour ="black"),
-        axis.ticks = element_line(colour ="black"))
+    geom_path(data = DoubsSpa, aes(label = X1), size = 0.5, colour = "light blue") +
+    geom_point(aes(cex=DoubsEnv$alt), colour = "red") +
+    labs(x = "x", y = "y", title = "Altitude") +
+    theme_bw() +
+    theme(panel.border = element_rect(fill = NA, colour = "black", size = 1),
+          axis.text = element_text(colour ="black"),
+          axis.ticks = element_line(colour ="black"))
 bubble1
+
+bubble2 <- ggplot(data = DoubsSpa, aes(x = X, y = Y)) +
+    geom_path(data = DoubsSpa, aes(label = X1), size = 0.5, colour = "light blue") +
+    geom_point(aes(cex=DoubsEnv$flo), colour = "blue") +
+    labs(x = "x", y = "y", title = "Flow rate") +
+    theme_bw() +
+    theme(panel.border = element_rect(fill = NA, colour = "black", size = 1),
+          axis.text = element_text(colour ="black"),
+          axis.ticks = element_line(colour ="black"))
+bubble2
+
+bubble3 <- ggplot(data = DoubsSpa, aes(x = X, y = Y)) +
+    geom_path(data = DoubsSpa, aes(label = X1), size = 0.5, colour = "light blue") +
+    geom_point(aes(cex=DoubsEnv$flo), colour = "green3") +
+    labs(x = "x", y = "y", title = "Oxygen") +
+    theme_bw() +
+    theme(panel.border = element_rect(fill = NA, colour = "black", size = 1),
+          axis.text = element_text(colour ="black"),
+          axis.ticks = element_line(colour ="black"))
+bubble3
+
+bubble4 <- ggplot(data = DoubsSpa, aes(x = X, y = Y)) +
+    geom_path(data = DoubsSpa, aes(label = X1), size = 0.5, colour = "light blue") +
+    geom_point(aes(cex=DoubsEnv$flo), colour = "brown") +
+    labs(x = "x", y = "y", title = "Nitrate") +
+    theme_bw() +
+    theme(panel.border = element_rect(fill = NA, colour = "black", size = 1),
+          axis.text = element_text(colour ="black"),
+          axis.ticks = element_line(colour ="black"))
+bubble4
+
+library(ggpubr)
+final_bubble <- ggarrange(bubble1, bubble2, bubble3, bubble4,
+                          ncol = 2, nrow = 2)
+final_bubble
 ```
 
 
