@@ -297,6 +297,16 @@ step_speciesric <- ggplot(site_pres, aes(x =N, y = spe_rich)) +
 
 step_speciesric
 
+sit.pres <- apply(DoubsSpe > 0, 1, sum)
+sites_df <- data.frame(Sites = sit.pres)
+sp_rich_df <- data.frame(Species_richness = sit.pres)
+mutate_site <- sp_rich_df %>% 
+  mutate(N = 1:30)
+Species_step <- ggplot(data = mutate_site, aes(x = N, y = Species_richness)) +
+  geom_step(colour = "lightblue") +
+  geom_text(aes(label = N), colour = "red")
+Species_step
+
 bubble <- ggplot(data = DoubsSpa, aes(x = X, y = Y)) +
   geom_path(data = DoubsSpa, aes(label = X1), size = 0.5, colour = "lightblue") +
   geom_point(aes(cex=site_pres$spe_rich), fill = "red", colour = "maroon") +
@@ -307,7 +317,7 @@ bubble <- ggplot(data = DoubsSpa, aes(x = X, y = Y)) +
         axis.ticks = element_line(colour ="black"))
 bubble
 
-plot_combined <- ggarrange(step_speciesric, bubble,
+plot_combined <- ggarrange(Species_step, bubble,
           ncol = 2)
 plot_combined
 
