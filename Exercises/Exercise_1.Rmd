@@ -281,53 +281,37 @@ plot_combined
 ```{r}
 # Compute the number of species at each site
 # To sum by rows, the second argument of apply(), MARGIN, is set to 1
-sit.pres <- apply(spe > 0, 1, sum)
-# Sort the results in increasing order
-sort(sit.pres)
-dev.new(title="Species Richness", width=10, height=5)
-par(mfrow=c(1,2))
-# Plot species richness vs. position of the sites along the river
-plot(sit.pres,type="s", las=1, col="gray",
-	main="Species Richness vs. \n Upstream-Downstream Gradient",
-	xlab="Positions of sites along the river", ylab="Species richness")
-text(sit.pres, row.names(spe), cex=.8, col="red")
-# Use geographic coordinates to plot a bubble map
-plot(spa, asp=1, main="Map of Species Richness", pch=21, col="white", 
-	bg="brown", cex=5*sit.pres/max(sit.pres), xlab="x coordinate (km)", 
-	ylab="y coordinate (km)")
-lines(spa, col="light blue")
+sit.pres <- data.frame(apply(DoubsSpe > 0, 1, sum))
+sort_sit.pres <- sort(sit.pres$apply.DoubsSpe...0..1..sum.)
+sit.pres_df <- data.frame(spe_rich = sort_sit.pres)
+sit.pres_df$spe_rich <- as.numeric(sit.pres_df$spe_rich)
+
+site_pres <- sit.pres_df %>% 
+  mutate(N = 1:30)
+
+step_speciesric <- ggplot(site_pres, aes(x =N, y = spe_rich)) +
+  geom_step() +
+  geom_text(aes(label = N), colour = "red") +
+   labs(x = "Positions of sites along the river", y = "Species richness", title = "Species Richness vs. Upstream-Downstream Gradient") +
+  theme1()
+
+step_speciesric
+
+bubble <- ggplot(data = DoubsSpa, aes(x = X, y = Y)) +
+  geom_path(data = DoubsSpa, aes(label = X1), size = 0.5, colour = "lightblue") +
+  geom_point(aes(cex=site_pres$spe_rich), fill = "red", colour = "maroon") +
+  labs(x = "x coordinate (km)", y = "y coordinate (km)", title = "Map of Species Richness") +
+  theme_bw() +
+  theme(panel.border = element_rect(fill = NA, colour = "black", size = 1),
+        axis.text = element_text(colour ="black"),
+        axis.ticks = element_line(colour ="black"))
+bubble
+
+plot_combined <- ggarrange(step_speciesric, bubble,
+          ncol = 2)
+plot_combined
+
 ```
-
-
-
-```{r}
-sit.pres <- apply(DoubsSpe > 0, 1, sum)
-sort(sit.pres) # Arranging results
-df_r <- data.frame(sit_pre = sit.pres)
-
-df_r$sit_pre <- as.numeric(df_r$sit_pre)
-# Plot species richness vs. position of the sites along the river
-
-
-
-
-plot(sit.pres,type="s", las=1, col="gray",
-	main="Species Richness vs. \n Upstream-Downstream Gradient",
-	xlab="Positions of sites along the river", ylab="Species richness")
-text(sit.pres, row.names(DoubsSpe), cex=.8, col="red")
-
-
-# Use geographic coordinates to plot a bubble map
-plot(DoubsSpa, asp=1, main="Map of Species Richness", pch=21, col="white", 
-	bg="brown", cex=5*sit.pres/max(sit.pres), xlab="x coordinate (km)", 
-	ylab="y coordinate (km)")
-lines(DoubsSpa, col="light blue")
-```
-
-
-
-
-
 
 Creating some basic visualisations on the dataset only focusing on the nitrogen (nit) collected at the various sites or X1 values. Visualisations often help analysing and provide a better understanding on the dataset.
 
@@ -429,60 +413,21 @@ DoubsSpe_wis[1:5,2:4]
 
 Now i create a boxplot to visualise and compare the effects of the above calculated transformations and standardisations.
 
-```{r fig.cap = "Fig. 2.6 Boxplots of transformed abundances of a common species, Nemacheilus barbatulus"}
-# Try 1 with ggplot
-ggplot(DoubsSpe,aes(x=factor(0),"babl")) +
-  geom_boxplot() +
-  theme1()
-qplot(factor(0),"babl",data=DoubsSpe,geom='boxplot')
-
-# 
-data(DoubsSpe)
-boxplot(DoubsSpe$Babl) +
-  theme1()
-
-# Standardization by species
-boxplot(DoubsSpe_scale$Babl, DoubsSpe_relsp$Babl,
-  main="Standardization by species",
-	names=c("max", "total"), col="lightgreen") + 
-  theme1()
 
 
-DoubsSpe_scale_Babl <- c(0.0, 0.6, 1.0, 1.0, 0.4, 1.0, 1.0, 0.0, 0.6, 0.8, 0.2, 0.8, 0.4, 0.8, 1.0, 1.0, 0.8, 0.6, 1.0, 0.4, 0.2, 0.2, 0.0, 0.0, 0.0, 0.2, 0.2)
+Environmental dataset
 
-DoubsSpe_relsp_Babl <- c(0.0, 0.0, 0.1, 0.1, 0.0, 0.1, 0.1, 0.0, 0.0 )
-new_data <- cbind(DoubsSpe_scale_Babl, DoubsSpe_relsp_Babl)
-
-
-library(reshape2)
-df1 <- melt(df)
-
-library(ggplot2)
-ggplot(aes(x = variable, y = value), data = df1) + geom_boxplot() + facet_wrap(~key)
-
-
-
-
-#Standardisation by site
+```{r}
+bubble1 <- ggplot(data = DoubsSpa, aes(x = X, y = Y)) +
+  geom_path(data = DoubsSpa, aes(label = X1), size = 0.5, colour = "lightblue") +
+  geom_point(aes(cex=DoubsEnv$alt), fill = "red", colour = "red", shape = 1) +
+  labs(x = "x", y = "y", title = "Altitude") +
+  theme_bw() +
+  theme(panel.border = element_rect(fill = NA, colour = "black", size = 1),
+        axis.text = element_text(colour ="black"),
+        axis.ticks = element_line(colour ="black"))
+bubble1
 ```
-
-
-
-
-Environmental Data
-
-
-
-
- 
-
-
-
-
-
-
-
-
 
 
 
