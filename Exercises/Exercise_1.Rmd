@@ -246,7 +246,6 @@ if(adegraphicsLoaded()) {
 ```
 
 Here i plot a histogram to comparing the number of species and the species occurance present at different sites. 
-
 ```{r}
 spe.pres <- apply(DoubsSpe > 0, 2, sum)
 sorting_spe <- sort(spe.pres) 
@@ -277,6 +276,7 @@ plot_combined <- ggarrange(plot1, plot2,
 plot_combined
 ```
 
+This code allows me to visualise the amount of species present at each of the sites. Using this i am able to determine the different species hotspots within this region. This is possible by plotting the species richness along the river.
 
 ```{r}
 # Compute the number of species at each site
@@ -427,11 +427,7 @@ Now i create a boxplot to visualise and compare the effects of the above calcula
 OMG THEM BOX PLOTS JUST DEFEATED ME...........
 ```
 
-
-
-
-
-Environmental dataset
+I am now working with the environmental dataset. Here i create bubble maps of the environmental variables
 
 ```{r}
 bubble1 <- ggplot(data = DoubsSpa, aes(x = X, y = Y)) +
@@ -480,6 +476,7 @@ final_bubble <- ggarrange(bubble1, bubble2, bubble3, bubble4,
 final_bubble
 ```
 
+Here i create a line plot in order to examine the variation of some discriptors along the stream
 
 ```{r}
 line1 <- ggplot(data = DoubsEnv, aes(x = dfs, y = alt)) +
@@ -493,7 +490,7 @@ line1
 
 line2 <- ggplot(data = DoubsEnv, aes(x = dfs, y = flo)) +
   geom_line() +
-    labs(x = "Distance from the source (km)", y = "Discharge (m3/s)", title = "Altitude") +
+    labs(x = "Distance from the source (km)", y = "Discharge (m3/s)", title = "Discharge") +
     theme_bw() +
     theme(panel.border = element_rect(fill = NA, colour = "black", size = 1),
           axis.text = element_text(colour ="black"),
@@ -502,7 +499,7 @@ line2
 
 line3 <- ggplot(data = DoubsEnv, aes(x = dfs, y = oxy)) +
   geom_line() +
-    labs(x = "Distance from the source (km)", y = "Oxygen (mg/L)", title = "Altitude") +
+    labs(x = "Distance from the source (km)", y = "Oxygen (mg/L)", title = "Oxygen") +
     theme_bw() +
     theme(panel.border = element_rect(fill = NA, colour = "black", size = 1),
           axis.text = element_text(colour ="black"),
@@ -511,7 +508,7 @@ line3
 
 line4 <- ggplot(data = DoubsEnv, aes(x = dfs, y = nit)) +
   geom_line() +
-    labs(x = "Distance from the source (km)", y = "Nitrate (mg/L)", title = "Altitude") +
+    labs(x = "Distance from the source (km)", y = "Nitrate (mg/L)", title = "Nitrate") +
     theme_bw() +
     theme(panel.border = element_rect(fill = NA, colour = "black", size = 1),
           axis.text = element_text(colour ="black"),
@@ -523,8 +520,22 @@ final_line <- ggarrange(line1, line2, line3, line4,
 final_line
 ```
 
+Creating a Bivariate plot with Histograms and Smooth curves
+
+```{r}
+
+```
+
+Here i calculate the simple transformation of the environmental variables. Thereafter i visualise this results by creating histograms and the boxplots of the untransformed and log transformed variable (pen).
+
+```{r}
+range(DoubsEnv$slo)
+
+ggplot(data = DoubsEnv, aes(x = slo)) +
+  geom_histogram()
 
 
+```
 
 
 
