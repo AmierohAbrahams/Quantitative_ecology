@@ -424,7 +424,10 @@ DoubsSpe_wis[1:5,2:4]
 Now i create a boxplot to visualise and compare the effects of the above calculated transformations and standardisations.
 
 ```{r}
-OMG THEM BOX PLOTS JUST DEFEATED ME...........
+
+DoubsSpe %>% 
+  select(Babl)
+
 ```
 
 I am now working with the environmental dataset. Here i create bubble maps of the environmental variables
@@ -531,9 +534,25 @@ Here i calculate the simple transformation of the environmental variables. There
 ```{r}
 range(DoubsEnv$slo)
 
-ggplot(data = DoubsEnv, aes(x = slo)) +
-  geom_histogram()
+mut_env <- DoubsEnv %>% 
+  mutate(log_slo = log(slo))
 
+A <- ggplot(data = mut_env, aes(x = slo)) +
+  geom_histogram(binwidth =  20, breaks = seq(0, 50, by = 10))
+
+B <- ggplot(data = mut_env, aes(x = log_slo)) +
+  geom_histogram(breaks = seq(-2, 4, by = 1))
+
+C <- ggplot(data = mut_env, aes(x = "", y = slo)) +
+  geom_boxplot()
+
+
+D <- ggplot(data = mut_env, aes(x = "", y = log_slo)) +
+  geom_boxplot() 
+
+final_shit <- ggarrange(A, B, C, D,
+                          ncol = 2, nrow = 2)
+final_shit
 
 ```
 
