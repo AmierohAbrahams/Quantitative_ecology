@@ -190,7 +190,7 @@ try4
 try5 <- ggplot(data = DoubsSpa, aes(x = X, y = Y)) +
   geom_path(data = DoubsSpa, aes(label = X1), size = 0.5, colour = "blue") +
   geom_point(aes(cex=DoubsSpe$Abbr), shape = 1) +
- labs(x = "x coordinate (km)", y = "y coordinate (km)", title = "Barbel") +
+ labs(x = "x coordinate (km)", y = "y coordinate (km)", title = "Common bream") +
  theme_bw() +
     theme(panel.border = element_rect(fill = NA, colour = "black", size = 1),
           axis.text = element_text(colour = "black"),
@@ -263,7 +263,7 @@ spe.relf_dataframe$Species_freq <- as.numeric(spe.relf_dataframe$Species_freq)
 final_cbind <- cbind(spe.pres_dataframe, spe.relf_dataframe)
 plot1 <- ggplot(data = final_cbind, aes(x = Species)) +
   geom_histogram(breaks=seq(0,30,by=5), col="red") +
-  labs(x = "Number of occurrences (%)", y = "Number of species", title = "Species Occurences") +
+  labs(x = "Number of occurrences", y = "Number of species", title = "Species Occurences") +
   theme1()
 
 plot2 <- ggplot(data = final_cbind, aes(x = Species_freq)) +
