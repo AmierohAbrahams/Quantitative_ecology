@@ -49,7 +49,9 @@ data("mite")
 data(mite.env)
 data("mite.xy")
 
-# DoubsSpe <- read_csv("NEwR_1st_edition_R332/NEwR_updated_material_R332-NEwR_ed1/DoubsSpe.csv")
+
+# Here we loading in the Doubs data
+#DoubsSpe <- read_csv("NEwR_1st_edition_R332/NEwR_updated_material_R332-NEwR_ed1/DoubsSpe.csv")
 # DoubsSpa <- read_csv("NEwR_1st_edition_R332/NEwR_updated_material_R332-NEwR_ed1/DoubsSpa.csv")
 # DoubsEnv <- read_csv("NEwR_1st_edition_R332/NEwR_updated_material_R332-NEwR_ed1/DoubsEnv.csv")
 ```
@@ -67,7 +69,7 @@ names(DoubsSpe)
 names <- names(DoubsSpe)
 row.names(DoubsSpe)
 colnames(DoubsSpe)
-summary(DoubsSpe)
+summary(DoubsSpe) 
 
 # Looking at the Cyca species specifically
 # Just playing around with some species
@@ -107,18 +109,18 @@ barplot(dataframe)
 # barplot(dataframe, xlab="Abundance class", ylab="Frequency")
 # df <- data.frame(unlist(DoubsSpe))
 
-df_r <- data.frame(integers = dataframe) # This allows me to view the actual dataset
-df_r$integers.Var1 <- as.numeric(df_r$integers.Var1) # converting to numeric from a factor
-df_r$integers.Freq <- as.numeric(df_r$integers.Freq)
+df_r <- data.frame(dataframe) # This allows me to view the actual dataset
+df_r$Var1 <- as.numeric(df_r$Var1) # converting to numeric from a factor
+df_r$Freq <- as.numeric(df_r$Freq)
 
 # Code without limits added to x-axis and yaxis
-ggplot(data = df_r, aes(x = integers.Var1, y = integers.Freq, fill=integers.Var1)) +
+ggplot(data = df_r, aes(x = Var1, y = Freq, fill=Var1)) +
   geom_bar(stat="identity", position=position_dodge()) +
   labs(x = "Abundance class", y = "Frequency") +
   theme1()
 
 # Now plotting the  bar graph
-ggplot(data = df_r, aes(x = integers.Var1, y = integers.Freq, fill=integers.Var1)) +
+ggplot(data = df_r, aes(x = Var1, y = Freq, fill=Var1)) +
   geom_bar(stat="identity", position=position_dodge()) +
   labs(x = "Abundance class", y = "Frequency") +
   scale_y_continuous(limits=c(-1, 600)) +
@@ -246,6 +248,7 @@ if(adegraphicsLoaded()) {
 ```
 
 Here i plot a histogram to comparing the number of species and the species occurance present at different sites. 
+
 ```{r}
 spe.pres <- apply(DoubsSpe > 0, 2, sum)
 sorting_spe <- sort(spe.pres) 
@@ -304,7 +307,8 @@ mutate_site <- sp_rich_df %>%
   mutate(N = 1:30)
 Species_step <- ggplot(data = mutate_site, aes(x = N, y = Species_richness)) +
   geom_step(colour = "lightblue") +
-  geom_text(aes(label = N), colour = "red")
+  geom_text(aes(label = N), colour = "red") +
+  labs(x = "Position of sites along the river")
 Species_step
 
 bubble <- ggplot(data = DoubsSpa, aes(x = X, y = Y)) +
@@ -336,6 +340,8 @@ ggplot(DoubsEnv, aes(x = X1, y = nit)) +
     theme(panel.border = element_rect(fill = NA, colour = "black", size = 1),
           axis.text = element_text(colour = "black"),
           axis.ticks = element_line(colour = "black"))
+
+# 
 ```
 
 Creating a box plot comparing X1 value to the amount of nitrogen present
@@ -349,9 +355,9 @@ ggplot(data = DoubsEnv, aes(x = X1, y = nit)) +
 I now make use of the diversity function within the vegan package to analyse the species richness and diversity within the DoubsSpe dataset. This datset is available in the vegan package as well. To view help in any function simply search it in the help function or type ?diversity in the console. Thereafter i calculate the nessasary infomation which explains the diversity within this DoubsSpe dataset. Once the calculations are complete i combine these variables thus creating a new complete dataset.
 
 ```{r}
-N0 <- rowSums(DoubsSpe > 0)         # Species richness
+N0 <- rowSums(DoubsSpe > 0)         # Species richness per site/ region
 N0_dataframe <- data.frame(N0)      # converting the above into a dataframe
-H <- diversity(DoubsSpe)            # Shannon entropy
+H <- diversity(DoubsSpe)            # Shannon entropy 
 N1 <- exp(H)                   # Shannon diversity (number of abundant species)
 N2 <- diversity(DoubsSpe, "inv")    # Simpson diversity (number of dominant species)
 J <- H/log(N0)                 # Pielou evenness
@@ -424,9 +430,6 @@ DoubsSpe_wis[1:5,2:4]
 Now i create a boxplot to visualise and compare the effects of the above calculated transformations and standardisations.
 
 ```{r}
-
-DoubsSpe %>% 
-  select(Babl)
 
 ```
 
@@ -526,7 +529,10 @@ final_line
 Creating a Bivariate plot with Histograms and Smooth curves
 
 ```{r}
-
+# 
+# pairs = DoubsEnv[, c("alt", "slo", "flo", "pH", "har", "pho", "nit", "amm", "oxy", "bod")]
+# pairs(DoubsEnv, labels = colnames(env), main = "Bivariate Plots with Histograms and Smooth Curves", pch = 21,
+#       bg = c("red", "green3", "blue", "yellow")[unclass(DoubsEnv$alt)], panel=panel.smooth, diag.panel=panel.hist) 
 ```
 
 Here i calculate the simple transformation of the environmental variables. Thereafter i visualise this results by creating histograms and the boxplots of the untransformed and log transformed variable (pen).
@@ -538,21 +544,26 @@ mut_env <- DoubsEnv %>%
   mutate(log_slo = log(slo))
 
 A <- ggplot(data = mut_env, aes(x = slo)) +
-  geom_histogram(binwidth =  20, breaks = seq(0, 50, by = 10))
+  geom_histogram(fill = "red",binwidth =  20, breaks = seq(0, 50, by = 10)) +
+   labs(x = "env$slo", y = "Frequency", title = "Histogram of env$slo")
 
 B <- ggplot(data = mut_env, aes(x = log_slo)) +
-  geom_histogram(breaks = seq(-2, 4, by = 1))
+  geom_histogram(fill =  "red" ,breaks = seq(-2, 4, by = 1)) +
+   labs(x = "log(env$slo)", y = "Frequency", title = "Histogram of ln(env$slo)")
 
 C <- ggplot(data = mut_env, aes(x = "", y = slo)) +
-  geom_boxplot()
+  geom_boxplot(fill = "red") +
+   labs(y = "env$slo", title = "Boxplot of env$slo")
 
 
 D <- ggplot(data = mut_env, aes(x = "", y = log_slo)) +
-  geom_boxplot() 
+  geom_boxplot(fill = "red") +
+   labs(y = "log(env$slo", title = "Boxplot of env$slo")
+  
 
-final_shit <- ggarrange(A, B, C, D,
+final_graph <- ggarrange(A, B, C, D,
                           ncol = 2, nrow = 2)
-final_shit
+final_graph
 
 ```
 
