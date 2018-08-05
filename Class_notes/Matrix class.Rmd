@@ -1,0 +1,63 @@
+---
+title: "Untitled"
+author: "Amieroh Abrahams"
+date: "02 August 2018"
+output: pdf_document
+---
+
+similarity matrix
+Alpha diversity - no of species present in a small sampling 
+
+Beta diversity: In ecology, beta diversity (β-diversity or true beta diversity) is the ratio between regional and local species diversity. The term was introduced by R. H. Whittaker together with the terms alpha diversity (α-diversity) and gamma diversity (γ-diversity).
+Change in community similarity as you move from one site to the next- called turnover
+Jackard index: The Jaccard index, also known as Intersection over Union and the Jaccard similarity coefficient (originally coined coefficient de communauté by Paul Jaccard), is a statistic used for comparing the similarity and diversity of sample sets.
+measures the rate at which things become dissimilar
+
+Gamma diversity: total amount of species present in the region being studied. Gamma diversity is the diversity of the entire landscape (regional species pool). Among these, alpha and gamma diversity are fairly straightforward. It's harder to grasp what beta diversity means, since it's usually used quite loosely. It's something of a bridge from the local (alpha) to the regional (gamma) scale.
+diverisity chhoice to be used depend on the questions that are being asked.
+
+Ecological similarity and differences
+distance matrix: how different is one transect from the next or how similar are they.
+similarity and dissimilarity are inversly related to eachother
+
+vegan-vegdist: used to calculate the distance
+euclidean used for environmental data not species data
+
+In mathematics, the Euclidean distance or Euclidean metric is the "ordinary" straight-line distance between two points in Euclidean space. With this distance, Euclidean space becomes a metric space. The associated norm is called the Euclidean norm. Older literature refers to the metric as the Pythagorean metric.
+
+```{r}
+library(vegan)
+ex.xy.euc <- vegdist(DoubsSpa, methord = "euclidian")
+ex.xy.euc
+
+dim(as.matrix(ex.xy.euc))
+
+env_std <- decostand(DoubsEnv, method = "standardize")
+env_euc <- round(vegdist(env_std, method = "euclidian"), 2)
+env_euc
+```
+
+```{r}
+# Lookig at the doubs species
+
+DoubsSpe
+spec_bray <- round(vegdist(DoubsSpe, method = "bray"), 2)
+as.matrix(spec_bray)[,1:4]
+# sites closer together are similar but sites that are far away are very different
+# plot beta diversity on the yaxis
+
+spec_jac <- round(vegdist(DoubsSpe, method = "jaccard"), 2)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+

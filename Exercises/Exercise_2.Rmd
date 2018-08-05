@@ -1,0 +1,12 @@
+---
+title: "Exercise_2"
+author: "Amieroh Abrahams"
+date: "05 August 2018"
+output: html_document
+---
+
+- Top three ecological journals in the world/ Journal of biogeography, ecology and ecography
+- Within each of the decades, select the first ten publications (or 5... not sure) and count the number of authors present per paper.
+- Repeat this for every journal for each of the years
+- class discussion
+- Also estimate the size of the study area for each publication.

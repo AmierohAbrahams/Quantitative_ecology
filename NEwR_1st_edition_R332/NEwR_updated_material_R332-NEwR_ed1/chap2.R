@@ -116,7 +116,7 @@ lines(spa, col="light blue")
 
 # Compute the number of sites where each species is present
 # To sum by columns, the second argument of apply(), MARGIN, is set to 2
-spe.pres <- apply(spe > 0, 2, sum)
+spe.pres <- apply(DoubsSpe > 0, 2, sum)
 # Sort the results in increasing order
 sort(spe.pres)
 # Compute percentage frequencies
