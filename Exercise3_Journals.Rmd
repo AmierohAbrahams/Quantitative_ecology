@@ -1,0 +1,77 @@
+---
+title: "Journal_exercise"
+author: "Amieroh Abrahams"
+date: "06 August 2018"
+output: html_document
+---
+First I need to find, install and load various packages. These packages will be available on CRAN and can be accessed and installed in the usual way.
+
+```{r}
+library(tidyverse)
+library(ggpubr)
+library(RColorBrewer)
+library(ggthemes)
+```
+
+Here i load in the dataset. Continuous data
+
+```{r}
+Journal_data <- read_csv("Data/Journal_data.csv")
+```
+
+Now we examine the dataset
+
+```{r}
+Journal_data <- as_tibble(Journal_data)
+Journal_data
+head(Journal_data)
+tail(Journal_data)
+summary(Journal_data)
+Journal_data %>%
+  summarise(mean_Authors =mean(No_of_authors, na.rm = TRUE))
+```
+
+
+```{r}
+ggplot(data = Journal_data, aes(x = year, y = No_of_authors, colour = study_size)) +
+geom_point() +
+geom_smooth(method = "lm") +
+labs(x = "Year", y = "No of authors", colour = "study area") + 
+theme(legend.position = "bottom") +
+ggtitle("Journal of Biogeography")
+```
+
+
+```{r}
+plot1 <- ggplot(Journal_data, aes(x = year, y = No_of_authors)) +
+  geom_col(aes(fill = study_size)) +
+labs(x = "Year", y = "No of authors", colour = "study area") + 
+theme(legend.position = "bottom") +
+ggtitle("Journal of Biogeography 1970's") +
+  theme_pubclean() + scale_color_few() +
+  scale_fill_few()
+
+plot2 <- ggplot(Ecography, aes(x = year, y = No_of_authors)) +
+  geom_col(aes(fill = study_size)) +
+labs(x = "Year", y = "No of authors", colour = "study area") + 
+theme(legend.position = "bottom") +
+ggtitle("Journal of Ecography 1970's") +
+theme_pubclean() + scale_color_few() +
+  scale_fill_few()
+
+combined_1970s <- ggarrange(plot1, plot2,
+          ncol = 2, nrow = 2)
+combined_1970s
+
+
+```
+
+# Maybe use my project to plot this
+
+```{r}
+box_1 <- ggplot(data = Journal_data, aes(x = year, y = No_of_authors)) +
+geom_boxplot(aes(fill = Journal_type)) +
+ggtitle("D.") 
+box_1
+```
+
