@@ -1,0 +1,602 @@
+year,journal,no_of_authors ,study_size
+1974,Biogeography,1,regional
+1974,Biogeography,2,local
+1974,Biogeography,1,local
+1974,Biogeography,1,local
+1975,Biogeography,1,country
+1975,Biogeography,1,country
+1975,Biogeography,1,country
+1975,Biogeography,4,country
+1975,Biogeography,3,country
+1976,Biogeography,4,country
+1976,Biogeography,1,local
+1976,Biogeography,5,country
+1976,Biogeography,4,local
+1976,Biogeography,5,country
+1977,Biogeography,2,country
+1977,Biogeography,1,country
+1977,Biogeography,2,local
+1977,Biogeography,3,country
+1977,Biogeography,2,country
+1978,Biogeography,2,local
+1978,Biogeography,3,country
+1978,Biogeography,1,local
+1978,Biogeography,2,local
+1978,Biogeography,4,country
+1979,Biogeography,2,local
+1979,Biogeography,2,local
+1979,Biogeography,1,country
+1979,Biogeography,1,country
+1979,Biogeography,4,country
+1978,Ecography,2,regional
+1978,Ecography,2,regional
+1978,Ecography,1,country
+1978,Ecography,3,country
+1978,Ecography,1,local
+1979,Ecography,1,local
+1979,Ecography,3,country
+1979,Ecography,2,country
+1979,Ecography,2,regional
+1979,Ecography,1,regional
+1970,Ecology,1,local
+1970,Ecology,1,local
+1970,Ecology,1,country
+1970,Ecology,1,local
+1970,Ecology,2,local
+1971,Ecology,2,regional
+1971,Ecology,1,local
+1971,Ecology,3,local
+1971,Ecology,1,local
+1971,Ecology,1,local
+1972,Ecology,2,local
+1972,Ecology,1,local
+1972,Ecology,3,country
+1972,Ecology,1,regional
+1972,Ecology,2,local
+1973,Ecology,1,regional
+1973,Ecology,1,local
+1973,Ecology,2,local
+1973,Ecology,4,local
+1973,Ecology,1,local
+1974,Ecology,2,regional
+1974,Ecology,1,local
+1974,Ecology,1,local
+1974,Ecology,2,local
+1974,Ecology,2,local
+1975,Ecology,1,regional
+1975,Ecology,2,local
+1975,Ecology,2,local
+1975,Ecology,2,local
+1975,Ecology,2,local
+1976,Ecology,1,local
+1976,Ecology,3,local
+1976,Ecology,1,local
+1976,Ecology,1,regional
+1976,Ecology,1,local
+1977,Ecology,1,local
+1977,Ecology,1,regional
+1977,Ecology,1,local
+1977,Ecology,2,local
+1977,Ecology,2,local
+1978,Ecology,2,local
+1978,Ecology,1,regional
+1978,Ecology,2,regional
+1978,Ecology,2,regional
+1978,Ecology,1,local
+1979,Ecology,1,regional
+1979,Ecology,1,local
+1979,Ecology,1,local
+1979,Ecology,4,local
+1979,Ecology,2,regional
+1987,Ecology,2,country
+1988,Ecology,1,global
+1988,Ecology,1,global
+1988,Ecology,1,global
+1988,Ecology,1,global
+1988,Ecology,2,Regional
+1989,Ecology,1,global
+1989,Ecology,1,Country
+1989,Ecology,1,global
+1989,Ecology,1,global
+1989,Ecology,1,country
+1980,Biogeography ,1,local
+1980,Biogeography ,1,regional
+1980,Biogeography ,2,regional 
+1980,Biogeography ,3,regional
+1980,Biogeography ,1,country
+1981,Biogeography ,2,local
+1981,Biogeography ,1,local
+1981,Biogeography ,2,country
+1981,Biogeography ,2,global
+1981,Biogeography ,4,country
+1982,Biogeography ,3,regional
+1982,Biogeography ,1,country
+1982,Biogeography ,1,local
+1982,Biogeography ,3,regional
+1982,Biogeography ,2,country
+1983,Biogeography ,1,local
+1983,Biogeography ,1,local
+1983,Biogeography ,2,regional
+1983,Biogeography ,3,regional
+1983,Biogeography ,2,regional
+1984,Biogeography ,1,regional
+1984,Biogeography ,2,regional
+1984,Biogeography ,1,country
+1984,Biogeography ,3,regional
+1984,Biogeography ,1,regional
+1985,Biogeography ,2,global
+1985,Biogeography ,2,regional
+1985,Biogeography ,1,regional
+1985,Biogeography ,3,country
+1985,Biogeography ,4,regional
+1986,Biogeography ,3,regional
+1986,Biogeography ,3,country
+1986,Biogeography ,1,regional
+1986,Biogeography ,2,local
+1986,Biogeography ,2,regional
+1987,Biogeography ,1,regional
+1987,Biogeography ,3,country
+1987,Biogeography ,4,country
+1987,Biogeography ,1,country
+1987,Biogeography ,1,regional
+1988,Biogeography ,1,country
+1988,Biogeography ,1,country
+1988,Biogeography ,1,regional
+1988,Biogeography ,1,regional
+1988,Biogeography ,1,local
+1989,Biogeography ,2,country
+1989,Biogeography ,2,regional
+1989,Biogeography ,1,country
+1989,Biogeography ,1,local
+1989,Biogeography ,3,regional
+1980,Ecography,1,local
+1980,Ecography,2,regional
+1980,Ecography,2,regional
+1980,Ecography,1,local
+1980,Ecography,2,local
+1981,Ecography,2,local
+1981,Ecography,1,regional
+1981,Ecography,1,local
+1981,Ecography,2,local
+1981,Ecography,1,regional
+1982,Ecography,3,local
+1982,Ecography,3,local
+1982,Ecography,1,local
+1982,Ecography,2,local
+1982,Ecography,2,local
+1983,Ecography,2,local
+1983,Ecography,4,local
+1983,Ecography,1,local
+1983,Ecography,1,local
+1983,Ecography,3,regional
+1984,Ecography,1,regional
+1984,Ecography,1,regional
+1984,Ecography,1,regional
+1984,Ecography,1,regional
+1984,Ecography,1,local
+1985,Ecography,1,local
+1985,Ecography,1,local
+1985,Ecography,1,local
+1985,Ecography,1,local
+1985,Ecography,1,local
+1986,Ecography,1,regional 
+1986,Ecography,2,regional
+1986,Ecography,2,regional
+1986,Ecography,3,local
+1986,Ecography,1,local
+1987,Ecography,2,local
+1987,Ecography,4,local
+1987,Ecography,2,regional
+1987,Ecography,2,local
+1987,Ecography,1,regional
+1988,Ecography,2,local
+1988,Ecography,1,local
+1988,Ecography,3,local
+1988,Ecography,3,local
+1988,Ecography,2,local
+1989,Ecography,2,regional
+1989,Ecography,2,local
+1989,Ecography,1,local
+1989,Ecography,1,local
+1989,Ecography,2,regional 
+1980,Ecology,1,regional 
+1980,Ecology,1,local
+1980,Ecology,2,hemisphere
+1980,Ecology,1,global
+1980,Ecology,2,regional 
+1981,Ecology,2,regional 
+1981,Ecology,1,global
+1981,Ecology,2,country
+1981,Ecology,1,local
+1981,Ecology,3,global
+1982,Ecology,1,regional
+1982,Ecology,1,local
+1982,Ecology,1,global
+1982,Ecology,1,global
+1982,Ecology,1,local
+1983,Ecology,2,country
+1983,Ecology,1,local
+1983,Ecology,2,local
+1983,Ecology,2,local
+1983,Ecology,2,local
+1984,Ecology,3,global
+1984,Ecology,1,regional
+1984,Ecology,1,local
+1984,Ecology,2,local
+1984,Ecology,2,local
+1985,Ecology,2,local
+1985,Ecology,1,regional
+1985,Ecology,1,local
+1985,Ecology,1,local
+1985,Ecology,1,local
+1986,Ecology,2,regional
+1986,Ecology,2,regional
+1986,Ecology,2,regional
+1986,Ecology,2,global
+1986,Ecology,2,regional
+1987,Ecology,1,country
+1987,Ecology,6,regional
+1987,Ecology,2,regional
+1987,Ecology,1,local
+1987,Ecology,2,country
+1988,Ecology,1,global
+1988,Ecology,1,global
+1988,Ecology,1,global
+1988,Ecology,1,global
+1988,Ecology,2,regional
+1989,Ecology,1,global
+1989,Ecology,1,country
+1989,Ecology,1,global
+1989,Ecology,1,global
+1989,Ecology,1,global
+1980,Biogeography  ,1,local
+1980,Biogeography  ,1,regional
+1980,Biogeography  ,2,regional 
+1980,Biogeography  ,3,regional
+1980,Biogeography  ,1,country
+1981,Biogeography  ,2,local
+1981,Biogeography  ,1,local
+1981,Biogeography  ,2,country
+1981,Biogeography  ,2,global
+1981,Biogeography  ,4,country
+1982,Biogeography  ,3,regional
+1982,Biogeography  ,1,country
+1982,Biogeography  ,1,local
+1982,Biogeography  ,3,regional
+1982,Biogeography  ,2,country
+1983,Biogeography  ,1,local
+1983,Biogeography  ,1,local
+1983,Biogeography  ,2,regional
+1983,Biogeography  ,3,regional
+1983,Biogeography  ,2,regional
+1984,Biogeography  ,1,regional
+1984,Biogeography  ,2,regional
+1984,Biogeography  ,1,country
+1984,Biogeography  ,3,regional
+1984,Biogeography  ,1,regional
+1985,Biogeography  ,2,global
+1985,Biogeography  ,2,regional
+1985,Biogeography  ,1,regional
+1985,Biogeography  ,3,country
+1985,Biogeography  ,4,regional
+1986,Biogeography  ,3,regional
+1986,Biogeography  ,3,country
+1986,Biogeography  ,1,regional
+1986,Biogeography  ,2,local
+1986,Biogeography  ,2,regional
+1987,Biogeography  ,1,regional
+1987,Biogeography  ,3,country
+1987,Biogeography  ,4,country
+1987,Biogeography  ,1,country
+1987,Biogeography  ,1,regional
+1988,Biogeography  ,1,country
+1988,Biogeography  ,1,country
+1988,Biogeography  ,1,regional
+1988,Biogeography  ,1,regional
+1988,Biogeography  ,1,local
+1989,Biogeography  ,2,country
+1989,Biogeography  ,2,regional
+1989,Biogeography  ,1,country
+1989,Biogeography  ,1,local
+1989,Biogeography  ,3,regional
+1990,Ecology,1,country
+1990,Ecology,1,global
+1990,Ecology,1,local
+1990,Ecology,1,local
+1990,Ecology,2,global
+1991,Ecology,3,global
+1991,Ecology,1,local
+1991,Ecology,2,regional
+1991,Ecology,2,regional
+1991,Ecology,1,regional
+1992,Ecology,1,global
+1992,Ecology,2,local
+1992,Ecology,2,regional
+1992,Ecology,3,local
+1992,Ecology,3,local
+1993,Ecology,2,global
+1993,Ecology,1,global
+1993,Ecology,2,global
+1993,Ecology,1,global
+1993,Ecology,3,global
+1994,Ecology,2,global
+1994,Ecology,1,global
+1994,Ecology,2,global
+1994,Ecology,1,regional
+1994,Ecology,2,regional
+1995,Ecology,4,local
+1995,Ecology,3,regional
+1995,Ecology,1,global
+1995,Ecology,1,local
+1995,Ecology,2,global
+1996,Ecology,3,regional
+1996,Ecology,1,local
+1996,Ecology,3,global
+1996,Ecology,1,global
+1996,Ecology,4,regional
+1997,Ecology,6,regional
+1997,Ecology,1,local
+1997,Ecology,2,regional
+1997,Ecology,5,global
+1997,Ecology,5,regional
+1998,Ecology,4,global
+1998,Ecology,3,regional
+1998,Ecology,2,global
+1998,Ecology,1,global
+1998,Ecology,2,global
+1999,Ecology,2,global
+1999,Ecology,2,country
+1999,Ecology,1,regional
+1999,Ecology,4,global
+1999,Ecology,6,global
+1990,Biogeography,4,country
+1990,Biogeography,1,country
+1990,Biogeography,3,regional 
+1990,Biogeography,1,country
+1990,Biogeography,1,country
+1991,Biogeography,3,hemisphere
+1991,Biogeography,3,country
+1991,Biogeography,1,country
+1991,Biogeography,2,country
+1991,Biogeography,1,country
+1992,Biogeography,2,country
+1992,Biogeography,1,regional 
+1992,Biogeography,2,continental
+1992,Biogeography,1,regional 
+1992,Biogeography,1,country
+1993,Biogeography,4,country
+1993,Biogeography,4,country
+1993,Biogeography,2,continental
+1993,Biogeography,1,country
+1993,Biogeography,5,country
+1994,Biogeography,2,country
+1994,Biogeography,1,country
+1994,Biogeography,5,country
+1994,Biogeography,4,continental
+1994,Biogeography,1,regional 
+1995,Biogeography,2,country
+1995,Biogeography,2,country
+1995,Biogeography,2,regional 
+1995,Biogeography,2,regional 
+1995,Biogeography,4,regional 
+1996,Biogeography,3,country
+1996,Biogeography,1,local
+1996,Biogeography,3,regional 
+1996,Biogeography,3,country
+1996,Biogeography,4,country
+1997,Biogeography,2,regional 
+1997,Biogeography,3,country
+1997,Biogeography,1,regional 
+1997,Biogeography,4,country
+1997,Biogeography,1,continental
+1998,Biogeography,3,regional 
+1998,Biogeography,3,regional 
+1998,Biogeography,1,continental
+1998,Biogeography,1,continental
+1998,Biogeography,3,local
+1999,Biogeography,2,continental
+1999,Biogeography,2,country
+1999,Biogeography,1,country
+1999,Biogeography,3,global
+1999,Biogeography,5,regional 
+1990,Ecography,1,Local
+1990,Ecography,2,regional
+1990,Ecography,5,local
+1990,Ecography,6,regional
+1990,Ecography,2,regional
+1991,Ecography,1,local
+1991,Ecography,2,regional
+1991,Ecography,3,regional
+1991,Ecography,2,country
+1991,Ecography,1,local
+1992,Ecography,2,local
+1992,Ecography,3,local
+1992,Ecography,1,local
+1992,Ecography,2,local
+1992,Ecography,2,local
+1993,Ecography,2,regional
+1993,Ecography,1,regional
+1993,Ecography,3,local
+1993,Ecography,1,local
+1993,Ecography,2,local
+1994,Ecography,1,regional
+1994,Ecography,2,local
+1994,Ecography,1,local
+1994,Ecography,1,country
+1994,Ecography,1,country
+1995,Ecography,1,country
+1995,Ecography,3,local
+1995,Ecography,3,regional
+1995,Ecography,3,local
+1995,Ecography,3,regional
+1996,Ecography,3,local
+1996,Ecography,2,regional
+1996,Ecography,3,local
+1996,Ecography,3,local
+1996,Ecography,1,regional
+1997,Ecography,2,regional
+1997,Ecography,1,local
+1997,Ecography,4,local
+1997,Ecography,3,local
+1997,Ecography,1,local
+1998,Ecography,3,local
+1998,Ecography,7,regional
+1998,Ecography,1,regional
+1998,Ecography,4,regional
+1998,Ecography,1,regional
+1999,Ecography,1,country
+1999,Ecography,2,regional
+1999,Ecography,3,local
+1999,Ecography,2,local
+1999,Ecography,3,local
+2000,Ecography,2,regional
+2000,Ecography,4,local
+2000,Ecography,4,regional
+2000,Ecography,2,local
+2000,Ecography,6,regional
+2001,Ecography,5,regional
+2001,Ecography,2,country
+2001,Ecography,3,country
+2001,Ecography,3,global
+2001,Ecography,4,regional
+2002,Ecography,1,global
+2002,Ecography,1,regional
+2002,Ecography,2,regional
+2002,Ecography,4,regional
+2002,Ecography,2,local
+2003,Ecography,3,local
+2003,Ecography,3,regional
+2003,Ecography,4,regional
+2003,Ecography,1,country
+2003,Ecography,4,country
+2004,Ecography,2,regional
+2004,Ecography,3,local
+2004,Ecography,3,country
+2004,Ecography,2,local
+2004,Ecography,4,local
+2005,Ecography,1,country
+2005,Ecography,3,regional
+2005,Ecography,4,local
+2005,Ecography,2,regional
+2005,Ecography,5,regional
+2006,Ecography,3,local
+2006,Ecography,3,country
+2006,Ecography,2,local
+2006,Ecography,1,local
+2006,Ecography,3,global
+2007,Ecography,3,regional
+2007,Ecography,1,country
+2007,Ecography,3,local
+2007,Ecography,3,local
+2007,Ecography,6,country
+2008,Ecography,4,hemisphere
+2008,Ecography,3,country
+2008,Ecography,6,local
+2008,Ecography,3,local
+2008,Ecography,7,regional
+2009,Ecography,3,regional
+2009,Ecography,4,country
+2009,Ecography,7,regional
+2009,Ecography,5,regional
+2009,Ecography,5,regional
+2000,Ecology,2,local
+2000,Ecology,1,local
+2000,Ecology,2,local
+2000,Ecology,6,regional
+2000,Ecology,2,local
+2001,Ecology,9,local
+2001,Ecology,3,global
+2001,Ecology,2,local
+2001,Ecology,5,global
+2001,Ecology,3,local
+2002,Ecology,1,regional
+2002,Ecology,2,country
+2002,Ecology,1,global
+2002,Ecology,2,local
+2002,Ecology,2,global
+2003,Ecology,2,local
+2003,Ecology,2,regional
+2003,Ecology,3,local
+2003,Ecology,2,local
+2003,Ecology,2,local
+2004,Ecology,1,regional
+2004,Ecology,2,local
+2004,Ecology,4,local
+2004,Ecology,4,local
+2004,Ecology,2,local
+2005,Ecology,3,local
+2005,Ecology,1,local
+2005,Ecology,2,local
+2005,Ecology,2,local
+2005,Ecology,11,regional
+2006,Ecology,2,local
+2006,Ecology,2,regional
+2006,Ecology,7,country
+2006,Ecology,2,local
+2006,Ecology,2,local
+2007,Ecology,1,regional
+2007,Ecology,6,regional
+2007,Ecology,3,local
+2007,Ecology,4,global
+2007,Ecology,3,local
+2008,Ecology,3,local
+2008,Ecology,3,local
+2008,Ecology,3,local
+2008,Ecology,5,local
+2008,Ecology,3,local
+2009,Ecology,7,regional
+2009,Ecology,4,global
+2009,Ecology,7,global
+2009,Ecology,2,global
+2009,Ecology,3,local
+2000,Biogeography,2,local
+2000,Biogeography,1,local
+2000,Biogeography,3,local
+2000,Biogeography,4,local
+2000,Biogeography,1,local
+2001,Biogeography,2,regional
+2001,Biogeography,1,local
+2001,Biogeography,2,local
+2001,Biogeography,1,country
+2001,Biogeography,2,Global
+2002,Biogeography,3,country
+2002,Biogeography,4,local
+2002,Biogeography,4,local
+2002,Biogeography,5,local
+2002,Biogeography,1,country
+2003,Biogeography,1,regional
+2003,Biogeography,3,local
+2003,Biogeography,2,continental
+2003,Biogeography,2,local
+2003,Biogeography,7,regional
+2004,Biogeography,1,local
+2004,Biogeography,1,country
+2004,Biogeography,2,local
+2004,Biogeography,2,country
+2004,Biogeography,8,country
+2004,Biogeography,6,Global
+2005,Biogeography,2,country
+2005,Biogeography,3,country
+2005,Biogeography,3,country
+2005,Biogeography,1,country
+2005,Biogeography,3,country
+2006,Biogeography,4,regional
+2006,Biogeography,5,country
+2006,Biogeography,2,local
+2006,Biogeography,3,continental
+2006,Biogeography,6,local
+2007,Biogeography,6,local
+2007,Biogeography,3,country
+2007,Biogeography,2,regional
+2007,Biogeography,5,local
+2007,Biogeography,2,country
+2008,Biogeography,2,country
+2008,Biogeography,13,regional
+2008,Biogeography,2,regional
+2008,Biogeography,4,country
+2008,Biogeography,4,regional
+2009,Biogeography,3,local
+2009,Biogeography,2,country
+2009,Biogeography,5,regional
+2009,Biogeography,3,continental
+2009,Biogeography,12,continental

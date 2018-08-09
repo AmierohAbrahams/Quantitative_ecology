@@ -1,0 +1,277 @@
+---
+title: "Exam_preperation"
+author: "Amieroh Abrahams"
+date: "09 August 2018"
+output: html_document
+---
+
+The packages needed for this is
+
+```{r}
+library(tidyverse)
+library(vegan)
+```
+
+
+####################CHAPTER2#####################
+
+Things to do when analysing the data
+
+```{r}
+spe			# Display the whole data frame in the console
+			# Not recommended for large datasets!
+spe[1:5,1:10]		# Display only 5 lines and 10 columns
+head(spe)			# Display only the first 6 lines
+nrow(spe)			# Number of rows (sites)
+ncol(spe)			# Number of columns (species)
+dim(spe)			# Dimensions of the data frame (rows, columns)
+colnames(spe)		# Column labels (descriptors = species)
+rownames(spe)		# Row labels (objects = sites)
+summary(spe)		# Descriptive statistics for columns
+```
+
+Creating maps and graphs to view the data
+This code is found in Exercise 1 and the respective chapters in the numerical ecology book (Base R way)
+Notes on diversity also found in the chapter2 as well as determining species distribution and abundance
+
+Now we look at thee decostand function. This function allows us to standardise the data. Species data specifically.
+
+```{r}
+?decostand
+
+## Simple transformations
+# Partial view of the raw data (abundance codes)
+spe[1:5, 2:4]
+# Transform abundances to presence-absence (1-0)
+spe.pa <- decostand(spe, method="pa")
+spe.pa[1:5, 2:4]
+
+
+## Species profiles: standardization by columns
+# Scale abundances by dividing them by the maximum value for each species
+# Note: MARGIN=2 (column, default value) for argument "max"
+spe.scal <- decostand(spe, "max")
+spe.scal[1:5,2:4]
+# Display the maximum by column
+apply(spe.scal, 2, max)
+
+# Scale abundances by dividing them by the species totals
+# (relative abundance by species)
+# Note: here, override the default MARGIN=1 argument of "total"
+spe.relsp <- decostand(spe, "total", MARGIN=2)
+spe.relsp[1:5,2:4]
+# Display the sum by column
+# Classical: apply(spe.relsp, 2, sum)
+colSums(spe.relsp)
+
+## Site profiles: standardization by rows
+# Scale abundances by dividing them by the site totals
+# (relative abundance by site)
+spe.rel <- decostand(spe, "total") # default MARGIN=1
+spe.rel[1:5,2:4]
+# Display the sum of row vectors to determine if the scaling worked properly
+# Classical: apply(spe.rel, 1, sum)
+rowSums(spe.rel)
+
+# Give a length of 1 to each row vector (Euclidean norm)
+# This is called the chord transformation
+spe.norm <- decostand(spe, "normalize") # default MARGIN=1
+spe.norm[1:5,2:4]
+# Verify the norm of row vectors
+norm <- function(x) sqrt(x%*%x)
+apply(spe.norm, 1, norm)
+
+# Compute square root of relative abundances by site
+# This is called the Hellinger transformation
+spe.hel <- decostand(spe, "hellinger")
+spe.hel[1:5,2:4]
+# Check the norm of row vectors
+apply(spe.hel, 1, norm)
+
+
+## Double profiles: standardization by columns and rows
+# Chi-square transformation
+spe.chi <- decostand(spe, "chi.square")
+spe.chi[1:5,2:4]
+# Check what happened to site 8 where no species was found
+spe.chi[7:9,]
+
+# Wisconsin standardization
+# Abundances are first ranged by species maxima and then by site totals
+spe.wis <- wisconsin(spe)
+spe.wis[1:5,2:4]
+
+```
+
+The simple transformations for the environmental datasets
+
+```{r}
+# Simple transformation of an environmental variable
+# Standardization of all environmental variables
+# Center and scale = standardize variables (z-scores)
+env.z <- decostand(env, "standardize")
+apply(env.z, 2, mean)	# means = 0
+apply(env.z, 2, sd)		# standard deviations = 1
+
+# Same standardization using the scale() function (which returns a matrix)
+env.z <- as.data.frame(scale(env))
+```
+
+
+####################CHAPTER 3########################################
+
+Focusing on the Qmode data
+Here we are doing the dissimilarity for the different types of datasets - this includes analysis for the binary data
+
+```{r}
+# Q-mode dissimilarity and distance measures for (semi-)quantitative data
+# Percentage difference (Bray-Curtis) dissimilarity matrix
+# on raw species data
+spe.db <- vegdist(spe)	# method="bray" (default)
+head(spe.db)
+
+# Percentage difference (Bray-Curtis) dissimilarity matrix
+# on log-transformed abundances
+spe.dbln <- vegdist(log1p(spe))
+head(spe.dbln)
+# Chord distance matrix
+spe.norm <- decostand(spe, "nor")
+spe.dc <- dist(spe.norm)
+head(spe.dc)
+# Hellinger distance matrix
+spe.hel <- decostand(spe, "hel")
+spe.dh <- dist(spe.hel)
+head(spe.dh)
+
+# Q-mode dissimilarity measures for binary data
+# Jaccard dissimilarity matrix using function vegdist()
+spe.dj <- vegdist(spe, "jac", binary=TRUE)
+head(spe.dj)
+head(sqrt(spe.dj))
+# Jaccard dissimilarity matrix using function dist()
+spe.dj2 <- dist(spe, "binary")
+head(spe.dj2)
+# Jaccard dissimilarity matrix using function dist.binary()
+spe.dj3 <- dist.binary(spe, method=1)
+head(spe.dj3)
+# Sorensen dissimilarity matrix using function dist.binary()
+spe.ds <- dist.binary(spe, method=5)
+head(spe.ds)
+# Sorensen dissimilarity matrix using function vegdist()
+spe.ds2 <- vegdist(spe, binary=TRUE)
+head(spe.ds2)
+head(sqrt(spe.ds2))
+# Ochiai dissimilarity matrix
+spe.och <- dist.binary(spe, method=7)
+head(spe.och)
+```
+
+Here we are working with spatial, environmental and species data. Euclidean distance for each of these datasets. Take note on when to use euclidean distances and when to use hellinger distances.
+
+```{r}
+# Compare distance matrices from environmental, species and spatial data
+
+# Remove the 'dfs' variable from the env dataset
+env2 <- env[,-1]
+
+# Euclidean distance matrix of the standardized env2 data frame
+env.de <- dist(scale(env2))
+dev.new(title="Environment", width=10, height=5)
+coldiss(env.de, nc=16, diag=TRUE)
+
+# Hellinger distance matrix of the species data (equal-sized classes)
+dev.new(title="Species", width=10, height=5)
+coldiss(spe.dh, nc=16, diag=TRUE)
+
+# Euclidean distance matrix on spatial coordinates (2D)
+spa.de <- dist(spa)
+dev.new(title="x-y", width=10, height=5)
+coldiss(spa.de, nc=16, diag=TRUE)
+
+# Euclidean distance matrix on distance from the source (1D)
+dfs.df <- as.data.frame(env$dfs, row.names=rownames(env))
+riv.de <- dist(dfs.df)
+dev.new(title="Distance from the source", width=10, height=5) 
+coldiss(riv.de, nc=16, diag=TRUE)
+
+```
+
+Making an artificial dataframe can be found in Chapter 3:
+working with five binary data variables in this dataset
+This is where they make use of the grower index....analysis
+
+Now we look at the Rmode data
+Species dataset: transformations and then doing Euclidean calculations
+Plotting of these variables may be found in chapter3 of the numerical ecology book
+
+```{r}
+# Transpose matrix of species abundances
+spe.t <- t(spe)
+
+# Chi-square pre-transformation followed by Euclidean distance
+spe.t.chi <- decostand(spe.t, "chi.square")
+spe.t.D16 <- dist(spe.t.chi)
+dev.new(title="D16 on fish species (R-mode)", width=10, height=5)
+coldiss(spe.t.D16, diag=TRUE)
+
+# Jaccard index on fish presence-absence
+spe.t.S7 <- vegdist(spe.t, "jaccard", binary=TRUE)
+dev.new(title="S7 on fish species (R-mode)", width=10, height=5) 
+coldiss(spe.t.S7, diag=TRUE)
+
+
+# R-mode correlation matrices
+# ***************************
+# Pearson r linear correlation among environmental variables
+env.pearson <- cor(env)	# default method = "pearson"
+round(env.pearson, 2)
+
+# Kendall tau rank correlation among environmental variables, no colors
+env.ken <- cor(env, method="kendall")
+env.o <- order.single(env.ken)
+dev.new(title="Rank correlation matrix", width=9, height=9)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,151 @@
+year,journal,no_of_authors ,study_size
+1980,ecography,1,local
+1980,ecography,2,regional
+1980,ecography,2,regional
+1980,ecography,1,local
+1980,ecography,2,local
+1981,ecography,2,local
+1981,ecography,1,regional
+1981,ecography,1,local
+1981,ecography,2,local
+1981,ecography,1,regional
+1982,ecography,3,local
+1982,ecography,3,local
+1982,ecography,1,local
+1982,ecography,2,local
+1982,ecography,2,local
+1983,ecography,2,local
+1983,ecography,4,local
+1983,ecography,1,local
+1983,ecography,1,local
+1983,ecography,3,regional
+1984,ecography,1,regional
+1984,ecography,1,regional
+1984,ecography,1,regional
+1984,ecography,1,regional
+1984,ecography,1,local
+1985,ecography,1,local
+1985,ecography,1,local
+1985,ecography,1,local
+1985,ecography,1,local
+1985,ecography,1,local
+1986,ecography,1,regional 
+1986,ecography,2,regional
+1986,ecography,2,regional
+1986,ecography,3,local
+1986,ecography,1,local
+1987,ecography,2,local
+1987,ecography,4,local
+1987,ecography,2,regional
+1987,ecography,2,local
+1987,ecography,1,regional
+1988,ecography,2,local
+1988,ecography,1,local
+1988,ecography,3,local
+1988,ecography,3,local
+1988,ecography,2,local
+1989,ecography,2,regional
+1989,ecography,2,local
+1989,ecography,1,local
+1989,ecography,1,local
+1989,ecography,2,regional 
+1980,ecology,1,regional
+1980,ecology,1,regional 
+1980,ecology,2,local
+1980,ecology,1,hemisphere
+1980,ecology,2,global
+1981,ecology,2,regional 
+1981,ecology,1,regional 
+1981,ecology,2,global
+1981,ecology,1,country
+1981,ecology,3,local
+1982,ecology,1,global
+1982,ecology,1,regional
+1982,ecology,1,local
+1982,ecology,1,global
+1982,ecology,1,global
+1983,ecology,2,local
+1983,ecology,1,country
+1983,ecology,2,local
+1983,ecology,2,local
+1983,ecology,2,local
+1984,ecology,3,local
+1984,ecology,1,global
+1984,ecology,1,regional
+1984,ecology,2,local
+1984,ecology,2,local
+1985,ecology,2,local
+1985,ecology,1,local
+1985,ecology,1,regional
+1985,ecology,1,local
+1985,ecology,1,local
+1986,ecology,2,local
+1986,ecology,2,regional
+1986,ecology,2,regional
+1986,ecology,2,regional
+1986,ecology,2,global
+1987,ecology,1,regional
+1987,ecology,6,country
+1987,ecology,2,regional
+1987,ecology,1,regional
+1987,ecology,2,local
+1988,ecology,1,country
+1988,ecology,1,global
+1988,ecology,1,global
+1988,ecology,1,global
+1988,ecology,2,global
+1989,ecology,1,regional
+1989,ecology,1,global
+1989,ecology,1,country
+1989,ecology,1,global
+1989,ecology,1,global
+1980,biogeography ,1,global
+1980,biogeography ,1,regional
+1980,biogeography ,2,regional 
+1980,biogeography ,3,regional
+1980,biogeography ,1,country
+1981,biogeography ,2,local
+1981,biogeography ,1,local
+1981,biogeography ,2,country
+1981,biogeography ,2,global
+1981,biogeography ,4,country
+1982,biogeography ,3,regional
+1982,biogeography ,1,country
+1982,biogeography ,1,local
+1982,biogeography ,3,regional
+1982,biogeography ,2,country
+1983,biogeography ,1,local
+1983,biogeography ,1,local
+1983,biogeography ,2,regional
+1983,biogeography ,3,regional
+1983,biogeography ,2,regional
+1984,biogeography ,1,regional
+1984,biogeography ,2,regional
+1984,biogeography ,1,country
+1984,biogeography ,3,regional
+1984,biogeography ,1,regional
+1985,biogeography ,2,global
+1985,biogeography ,2,regional
+1985,biogeography ,1,regional
+1985,biogeography ,3,country
+1985,biogeography ,4,regional
+1986,biogeography ,3,regional
+1986,biogeography ,3,country
+1986,biogeography ,1,regional
+1986,biogeography ,2,local
+1986,biogeography ,2,regional
+1987,biogeography ,1,regional
+1987,biogeography ,3,country
+1987,biogeography ,4,country
+1987,biogeography ,1,country
+1987,biogeography ,1,regional
+1988,biogeography ,1,country
+1988,biogeography ,1,country
+1988,biogeography ,1,regional
+1988,biogeography ,1,regional
+1988,biogeography ,1,local
+1989,biogeography ,2,country
+1989,biogeography ,2,regional
+1989,biogeography ,1,country
+1989,biogeography ,1,local
+1989,biogeography ,3,regional

@@ -1,0 +1,151 @@
+year,journal,no_of_authors ,study_size
+1990,Ecology,Country,
+1990,Ecology,Global,
+1990,Ecology,Localized,
+1990,Ecology,Localized,
+1990,Ecology,Global,
+1991,Ecology,Global,
+1991,Ecology,Localized,
+1991,Ecology,Regional,
+1991,Ecology,Regional,
+1991,Ecology,Regional,
+1992,Ecology,Global,
+1992,Ecology,Localized,
+1992,Ecology,Regional,
+1992,Ecology,Localized,
+1992,Ecology,Localized,
+1993,Ecology,Global,
+1993,Ecology,Global,
+1993,Ecology,Global,
+1993,Ecology,Global,
+1993,Ecology,Global,
+1994,Ecology,Global,
+1994,Ecology,Global,
+1994,Ecology,Global,
+1994,Ecology,Regional,
+1994,Ecology,Regional,
+1995,Ecology,Localized,
+1995,Ecology,Regional,
+1995,Ecology,Global,
+1995,Ecology,Localized,
+1995,Ecology,Global,
+1996,Ecology,Regional,
+1996,Ecology,Localized,
+1996,Ecology,Global,
+1996,Ecology,Global,
+1996,Ecology,Regional,
+1997,Ecology,Regional,
+1997,Ecology,Localized,
+1997,Ecology,Regional,
+1997,Ecology,Global,
+1997,Ecology,Regional,
+1998,Ecology,Global,
+1998,Ecology,Regional,
+1998,Ecology,Global,
+1998,Ecology,Global,
+1998,Ecology,Global,
+1999,Ecology,Global,
+1999,Ecology,Country,
+1999,Ecology,Regional,
+1999,Ecology,Global,
+1999,Ecology,Global,
+1990,Biogeography,country,4
+1990,Biogeography,country,1
+1990,Biogeography,regional ,3
+1990,Biogeography,country,1
+1990,Biogeography,country,1
+1991,Biogeography,Hemispheral,3
+1991,Biogeography,country,3
+1991,Biogeography,country,1
+1991,Biogeography,country,2
+1991,Biogeography,country,1
+1992,Biogeography,country,2
+1992,Biogeography,regional ,1
+1992,Biogeography,continental,2
+1992,Biogeography,regional ,1
+1992,Biogeography,country,1
+1993,Biogeography,country,4
+1993,Biogeography,country,4
+1993,Biogeography,continental,2
+1993,Biogeography,country,1
+1993,Biogeography,country,5
+1994,Biogeography,country,2
+1994,Biogeography,country,1
+1994,Biogeography,country,5
+1994,Biogeography,continental,4
+1994,Biogeography,regional ,1
+1995,Biogeography,country,2
+1995,Biogeography,country,2
+1995,Biogeography,regional ,2
+1995,Biogeography,regional ,2
+1995,Biogeography,regional ,4
+1996,Biogeography,country,3
+1996,Biogeography,local,1
+1996,Biogeography,regional ,3
+1996,Biogeography,country,3
+1996,Biogeography,country,4
+1997,Biogeography,regional ,2
+1997,Biogeography,country,3
+1997,Biogeography,regional ,1
+1997,Biogeography,country,4
+1997,Biogeography,continental,1
+1998,Biogeography,regional ,3
+1998,Biogeography,regional ,3
+1998,Biogeography,continental,1
+1998,Biogeography,continental,1
+1998,Biogeography,local,3
+1999,Biogeography,continental,2
+1999,Biogeography,country,2
+1999,Biogeography,country,1
+1999,Biogeography,worldwide,3
+1999,Biogeography,regional ,5
+1990,Ecography,Local,1
+1990,Ecography,Regional,2
+1990,Ecography,Local,5
+1990,Ecography,regional,6
+1990,Ecography,Regional,2
+1991,Ecography,local,1
+1991,Ecography,regional,2
+1991,Ecography,Regional,3
+1991,Ecography,Country,2
+1991,Ecography,local,1
+1992,Ecography,local,2
+1992,Ecography,local,3
+1992,Ecography,local,1
+1992,Ecography,local,2
+1992,Ecography,,2
+1993,Ecography,regional,2
+1993,Ecography,regional,1
+1993,Ecography,local,3
+1993,Ecography,local,1
+1993,Ecography,local,2
+1994,Ecography,regional,1
+1994,Ecography,local,2
+1994,Ecography,local,1
+1994,Ecography,country,1
+1994,Ecography,country,1
+1995,Ecography,country,1
+1995,Ecography,local,3
+1995,Ecography,regional,3
+1995,Ecography,local,3
+1995,Ecography,regional,3
+1996,Ecography,local,3
+1996,Ecography,regional,2
+1996,Ecography,local,3
+1996,Ecography,local,3
+1996,Ecography,regional,1
+1997,Ecography,regional,2
+1997,Ecography,local,1
+1997,Ecography,local,4
+1997,Ecography,local,3
+1997,Ecography,local,1
+1998,Ecography,local,3
+1998,Ecography,regional,7
+1998,Ecography,regional,1
+1998,Ecography,regional,4
+1998,Ecography,regional,1
+1999,Ecography,country,1
+1999,Ecography,regional,2
+1999,Ecography,local,3
+1999,Ecography,local,2
+1999,Ecography,local,3
