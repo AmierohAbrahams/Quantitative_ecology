@@ -11,6 +11,7 @@ library(tidyverse)
 library(ggpubr)
 library(RColorBrewer)
 library(ggthemes)
+library(readr)
 ```
 
 The class collected data from three types of journals. The journal of biogeography, journal of ecography and the journal of ecology. The first 5 publications of each of the years were selected. The class was divided into four groups. Each group selected one decade ranging from 1970, 1980, 1990, 2000. Each group recorded the number of authors, the size of the study and the year of publication for their decade.
@@ -19,9 +20,7 @@ Here i load in the dataset. Continuous data
 
 ```{r}
 # Journal_data <- read_csv("Data/Journal_data.csv")
-Ecology_1970s <- read_csv("Data/Ecology_1970s.csv")
-Biogeography_1970s<- read_csv("Data/1970_Biogeography.csv")
-Ecography_1970s <- read_csv("Data/1970_Ecography.csv")
+JD_2000 <- read_csv("Data_Journals/JD_2000.csv")
 ```
 
 Plotting a bar graph for the year 1970s
@@ -253,19 +252,96 @@ homo <- Combined_authors %>%
 Any further analysis requires us to write up an hypothesis in order to determine which tests to use when comparing the combined dataset.
 
 
-    H0: The number of authors publishing a paper did not increase over the past decades.
-    H1: The number of authors publishing a paper increased over the past decades.
+    H0: number of authors does not increase as years go by.
+    H1: number of authors increases as years go by.
 
     H0: The study size has not increased over the past decade.
     H1: The study size has increased over the past decade.
 
 Here we load the ggpubr package. This allows us to access the compare_means() function, which allows us to perform any sort of test that compares sample sets of data and outputs the results as a dataframe. 
 
-```{r}
-compare_means(no_of_authors ~ year, data = Combined_authors, method = "t.test")
+Here we are unable to use a ttest because there are more than two factors or groups present within the dataset. So here we do an anova test which looks at the number of authors per year
 
-compare_means(no_of_authors ~ year , data = Combined_authors, method = "t.test", alternative = "two.sided")
+```{r}
+auth.aov <- aov(no_of_authors ~ year, data = Combined_authors)
+summary(auth.aov)
+  # results show p<0.05...
+
+# if data is not normal... (similar end result though for non-parametric test)
+compare_means(no_of_authors ~ year, data = Combined_authors, method = "kruskal.test")
+  # results show p<0.05 therefore, 
+  # number of authors increase as years go by
+
+# but there are a load of dates, maybe we can condense dates into just 70s, 80s, 90s and 00s?
+# then we'll only have four groups to compare instead of all the dates individually?? i think... 
+
+# we can also do an ANOVA for number of authors by journal
+# however. not sure if this has any significance to us. but I'll do it anyway
+jour.aov <- aov(no_of_authors ~ journal, data = Combined_authors)
+summary(jour.aov)
+  # results show p = 0.111 so there is no significant difference in number of authors by journal
+
+# same result for non-parametric test
+compare_means(no_of_authors ~ journal, data = Combined_authors, method = "kruskal.test")
+
+TukeyHSD(jour.aov)
+plot(TukeyHSD(jour.aov))
+# TBH im deeply confused and i dont know what this means. i am a fool.
+
+# maybe we can do a correlation to see if theres a relationship between number of authors and
+# study size (more authors = larger study size?)
+  # cor.test(Combined_authors$no_of_authors, Combined_authors$study_size, method = "")
+    # error for this too... SAD. Do you think there will be a difference if we change study size to
+    # classes 1-5?
+
+# correlation and regression for year and number of authors
+cor.test(Combined_authors$year, Combined_authors$no_of_authors, method = "spearman")
+  # 36.8% of variance explained (not very strong relationship but positive)
+summary(lm(no_of_authors ~ year, data = Combined_authors))
+  # 15.3% of variance explained (also not very strong, positive though)
+
+# random EDA stuff
+summary(Combined_authors)
+
+ggplot(data = Combined_authors, aes(x = as.factor(year), y = no_of_authors)) +
+  geom_col() +
+  facet_wrap(~ journal)
+
+# to try:
+  # condense dates into their decades... 70s, 80s etc
+    # rename study sizes as class numbers (1-5)... this might make the correlation thing work
+      # working with mean number of authors per year or decade may also make things easier 
+# in the normality test more of the values are less than 0.05. so i dont think the data is normally distributed...
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
