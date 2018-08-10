@@ -20,7 +20,9 @@ Here i load in the dataset. Continuous data
 
 ```{r}
 # Journal_data <- read_csv("Data/Journal_data.csv")
-JD_2000 <- read_csv("Data_Journals/JD_2000.csv")
+Ecology_1970s <- read_csv("Data/Ecology_1970s.csv")
+Biogeography_1970s<- read_csv("Data/1970_Biogeography.csv")
+Ecography_1970s <- read_csv("Data/1970_Ecography.csv")
 ```
 
 Plotting a bar graph for the year 1970s
@@ -247,6 +249,7 @@ Once we established that the data is normally distributed it is now nessasary to
 homo <- Combined_authors %>% 
   group_by(year) %>% 
   summarise(auth_var = var(no_of_authors))
+homo
 ```
 
 Any further analysis requires us to write up an hypothesis in order to determine which tests to use when comparing the combined dataset.
@@ -260,7 +263,7 @@ Any further analysis requires us to write up an hypothesis in order to determine
 
 Here we load the ggpubr package. This allows us to access the compare_means() function, which allows us to perform any sort of test that compares sample sets of data and outputs the results as a dataframe. 
 
-Here we are unable to use a ttest because there are more than two factors or groups present within the dataset. So here we do an anova test which looks at the number of authors per year
+Here we are unable to use a ttest because there are more than two factors or groups present within the dataset. So now i do an anova test which looks at the number of authors per year
 
 ```{r}
 auth.aov <- aov(no_of_authors ~ year, data = Combined_authors)
@@ -286,13 +289,10 @@ compare_means(no_of_authors ~ journal, data = Combined_authors, method = "kruska
 
 TukeyHSD(jour.aov)
 plot(TukeyHSD(jour.aov))
-# TBH im deeply confused and i dont know what this means. i am a fool.
 
-# maybe we can do a correlation to see if theres a relationship between number of authors and
-# study size (more authors = larger study size?)
-  # cor.test(Combined_authors$no_of_authors, Combined_authors$study_size, method = "")
-    # error for this too... SAD. Do you think there will be a difference if we change study size to
-    # classes 1-5?
+# maybe i can do a correlation to see if theres a relationship between number of authors and study size (more authors = larger study size?)
+# cor.test(Combined_authors$no_of_authors, Combined_authors$study_size, method = "")
+# error for this too... SAD. Do you think there will be a difference if we change study size to classes 1-5?
 
 # correlation and regression for year and number of authors
 cor.test(Combined_authors$year, Combined_authors$no_of_authors, method = "spearman")
@@ -303,96 +303,19 @@ summary(lm(no_of_authors ~ year, data = Combined_authors))
 # random EDA stuff
 summary(Combined_authors)
 
-ggplot(data = Combined_authors, aes(x = as.factor(year), y = no_of_authors)) +
-  geom_col() +
-  facet_wrap(~ journal)
+ggplot(data = Combined_authors, aes(x = year, y = no_of_authors)) +
+  geom_col(fill = "salmon") +
+  facet_wrap(~ journal) +
+  labs(x = "Year", y = "No of authors") + 
+  ggtitle("Different journals") +
+  theme_pubclean() + scale_color_few() +
+  scale_fill_few()
 
 # to try:
-  # condense dates into their decades... 70s, 80s etc
-    # rename study sizes as class numbers (1-5)... this might make the correlation thing work
-      # working with mean number of authors per year or decade may also make things easier 
+# condense dates into their decades... 70s, 80s etc
+# rename study sizes as class numbers (1-5)... this might make the correlation thing work
+# working with mean number of authors per year or decade may also make things easier 
 # in the normality test more of the values are less than 0.05. so i dont think the data is normally distributed...
+# Tons can still be done with this dataset
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Ignore this!!
-Now we examine the dataset. Journal data is the entire class dataset combined
-
-```{r}
-Journal_data <- as_tibble(Journal_data)
-Journal_data
-head(Journal_data)
-tail(Journal_data)
-summary(Journal_data)
-Journal_data %>%
-  summarise(mean_Authors =mean(No_of_authors, na.rm = TRUE))
-```
-
-
-
-
-
-
-
-
 
