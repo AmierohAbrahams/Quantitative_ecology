@@ -304,7 +304,7 @@ summary(lm(no_of_authors ~ year, data = Combined_authors))
 summary(Combined_authors)
 
 ggplot(data = Combined_authors, aes(x = year, y = no_of_authors)) +
-  geom_col(fill = "salmon") +
+  geom_line(fill = "salmon") +
   facet_wrap(~ journal) +
   labs(x = "Year", y = "No of authors") + 
   ggtitle("Different journals") +
