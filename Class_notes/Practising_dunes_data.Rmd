@@ -1,0 +1,145 @@
+---
+title: "Dunes_data"
+author: "Amieroh Abrahams"
+date: "13 August 2018"
+output: html_document
+---
+
+Here i load the packages needed for this analysis
+
+```{r}
+library(tidyverse)
+library(vegan)
+library(ade4)
+library(vegan)
+library(gclus)
+library(ape)
+```
+
+The next step is to now load the different datasets required for further analysis. This data is present in the vegan package.
+
+```{r}
+str(dune)
+data("dune") # The species data
+data("dune.env") # The environmental data
+dune.env
+```
+
+The next step is to load all the possible functions that may be needed later in this analysis for the production of graphs and other statsictical tests.
+
+```{r}
+source("evplot.R")
+source("cleanplot.pca.R")
+source("PCA.newr.R")
+source("CA.newr.R")
+```
+
+Now that all packages and functions are loaded, i am able to explore the data before doing any futher analysis
+
+```{r}
+dune	
+dune[1:5,1:10]	
+head(dune)		
+nrow(dune)			
+ncol(dune)			
+dim(dune)			
+colnames(dune)		
+rownames(dune)		
+summary(dune)
+```
+
+Here i now add a colum to the dataset to compare the different sites in order to compare species variations.
+
+```{r}
+dune <- dune %>% 
+  mutate(N = 1:20)
+```
+
+Doing different analysis on the Dataset. Does not appear to be binary data as such Jaccard dissimilaarity will most likely not be used but rather Bray curtis. Here i do various transformations on the dataset.
+
+```{r}
+## Simple transformations
+# Partial view of the raw data (abundance codes)
+dune[1:5, 2:4] # looking at row 1-5; colum 2-4
+
+# Calculating the square root of the abundances 
+# This is called the Hellinger transformation
+dune.hel <- decostand(dune, "hellinger")
+dune.hel[1:5,2:4]
+
+## Double profiles: standardization by columns and rows
+# Chi-square transformation
+dune.chi <- decostand(dune, "chi.square")
+dune.chi[1:5,2:4]
+```
+
+Here we do simple transformations on the environmental dataset. This is done by standardising the dataset.
+
+```{r}
+dune.z <- decostand(dune, "standardize")
+apply(dune.z, 2, mean)	# means = 0
+apply(dune.z, 2, sd)		# standard deviations = 1
+
+dune.z <- as.data.frame(scale(dune)) # This gives the original matrix
+```
+
+Next i make use of the Bray-Curtis dissimilarity index. Here i chose this index as im working with abundance data and not with present-absence data (Binary data). If this however was presence-absence data one would be using the Jaccard dissimilarity index.
+
+```{r}
+# Percentage difference (Bray-Curtis) dissimilarity matrix
+# on raw species data
+dune.db <- vegdist(dune)	# method="bray" (default)
+head(dune.db) # Shows the first six rows.
+
+# Percentage difference (Bray-Curtis) dissimilarity matrix
+# on log-transformed abundances
+dune.dbln <- vegdist(log1p(dune))
+head(dune.dbln)
+
+######################### THE AJ WAY OF LIFE ##################
+##########################################################Using the Bray_curtis on species data
+
+dune_bray <- round(vegdist(dune, method = "bray"), 2)
+as.matrix(dune_bray)[, 1:4]
+```
+
+Here i now standardise the dune env data in order to do any further analaysis
+
+```{r}
+# decostand func
+dune_std <- decostand(dune.env [,1], method = "standardize")
+
+cor(env)
+cor(env_std)
+# calculating the mean of each of the columns:
+round(apply(env_std, 2, FUN = mean, 2)) 
+# The first 2 in this formula is to calculate the mean for the column. if the value was 1 then it calculates the rows 
+round(apply(env_std, 2, FUN = sd, 2))
+
+env_pca <-  rda(env, scale = TRUE)
+sum(env_pca$CA$eig) # Calculating the sum
+# What does the correlation matrix mean?
+# when you compare a variable with itself it equals 1
+# what are eignen values - 
+summary(env_pca)
+# Species scores - eigan vectors - correltion between unscaled value and the new value
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
